@@ -1,0 +1,7 @@
+﻿<CodePackage xmlns="http://www.skyline.be/ClassLibrary">
+  <MinimumRequiredVersion>9.0.0.0 - 7282</MinimumRequiredVersion>
+  <Identity>
+    <Name>DataMiner_Class_Library</Name>
+    <Version>1.0.0.2</Version>
+  </Identity>
+</CodePackage>
