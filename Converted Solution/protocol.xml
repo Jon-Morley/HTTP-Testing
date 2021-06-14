@@ -246,6 +246,20 @@ Any inquiries can be addressed to:
 			</Measurement>
 		</Param>
 	</Params>
+	<HTTP>
+		<Session id="1030" name="GetStuff">
+			<Connection id="1" name="GetStuff">
+				<Request verb="GET" pid="1040">
+				</Request>
+				<Response statusCode="100">
+					<Headers>
+						<Header key="Content-Type" pid="200"></Header>
+					</Headers>
+					<Content pid="1081"></Content>
+				</Response>
+			</Connection>
+		</Session>
+	</HTTP>
 	<QActions>
 		<QAction id="1" name="Precompiled Code" encoding="csharp" options="precompile">
 			
@@ -267,6 +281,14 @@ Any inquiries can be addressed to:
 				<Action>2</Action>
 			</Content>
 		</Group>
+		<Group id="3">
+			<Name>HTTP Get</Name>
+			<Description>HTTP Get</Description>
+			<Type>poll action</Type>
+			<Content>
+				<Session>1030</Session>
+			</Content>
+		</Group>
 	</Groups>
 
 	<Triggers>
@@ -277,6 +299,15 @@ Any inquiries can be addressed to:
 			<Type>action</Type>
 			<Content>
 				<Id>1</Id>
+			</Content>
+		</Trigger>
+		<Trigger id="2">
+			<Name>Manually run Session 1030</Name>
+			<On id="1080">parameter</On>
+			<Time>change</Time>
+			<Type>action</Type>
+			<Content>
+				<Id>3</Id>
 			</Content>
 		</Trigger>
 	</Triggers>
@@ -290,6 +321,11 @@ Any inquiries can be addressed to:
 		<Action id="2">
 			<Name>After Startup QAction</Name>
 			<On id="2">parameter</On>
+			<Type>run actions</Type>
+		</Action>
+		<Action id="3">
+			<Name>Manually run Session 1030</Name>
+			<On id="3">group</On>
 			<Type>run actions</Type>
 		</Action>
 	</Actions>
@@ -307,6 +343,7 @@ Any inquiries can be addressed to:
 			<Time initial="true" dataDisplay="30000">60000</Time>
 			<Interval>75</Interval>
 			<Content>
+				<Group>3</Group>
 			</Content>
 		</Timer>
 		<Timer id="3">
@@ -317,10 +354,6 @@ Any inquiries can be addressed to:
 			</Content>
 		</Timer>
 	</Timers>
-
-	<PortSettings>
-	</PortSettings>
-
 	<VersionHistory>
 		<Branches>
 			<Branch id="1">
